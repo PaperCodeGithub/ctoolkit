@@ -60,11 +60,11 @@ Dynamic and Type-Safe Arrays for C.
 The ```carray.h``` module provides a flexible wrapper around standard C arrays, allowing for dynamic resizing, multiple data types, and built-in searching and sorting algorithms. It manages memory allocation and reallocations automatically.
 
 ## Supported Data Types
-- TYPE_INT (Integer)
-- TYPE_FLOAT (Float)
-- TYPE_DOUBLE (Double)
-- TYPE_CHAR (Character)
-- TYPE_STRING (String/Character Pointer)
+- ```TYPE_INT``` Integer
+- ```TYPE_FLOAT``` Float
+- ```TYPE_DOUBLE``` Double
+- ```TYPE_CHAR``` Character
+- ```TYPE_STRING``` String/Character Pointer
 
 ## Module Documentation
 
@@ -168,3 +168,106 @@ free_array(words);
 ## Implementation Details
 Functions that return a new pointer (like str_trim, str_replace, and str_split) use heap allocation. The user is responsible for calling free() or free_array() to prevent memory leaks. The str_split function uses an internal 1024-byte buffer for parsing tokens.
 
+# C-Zen Toolkit: cmath.h
+Comprehensive Mathematical and Matrix Library for C.
+
+The cmath.h module provides high-level mathematical utilities, ranging from standard number theory functions to a complete matrix manipulation suite and a string-based expression evaluator.
+
+## Module Documentation
+
+### Matrix Operations
+- ```create_matrix(rows, cols)```: Allocates a 2D matrix on the heap.
+- ```free_matrix(m)```: Deallocates matrix memory.
+- ```matrix_from_input(rows, cols)```: Creates a matrix and populates it via user console input.
+- ```matrix_rand(rows, cols, min, max)```: Generates a matrix with random values in a specified range.
+- ```matrix_add(a, b)```: Returns a new matrix representing the sum of A and B.
+- ```matrix_sub(a, b)```: Returns a new matrix representing the difference of A and B.
+- ```matrix_mult(a, b)```: Performs matrix multiplication (Dot Product) and returns the result.
+- ```matrix_transpose(m)```: Returns the transposed version of the input matrix.
+- ```matrix_print(m)```: Displays the matrix in a clean, formatted grid.
+
+### Sparse Matrix Support
+- ```to_sparse(m, count)```: Converts a standard dense matrix into a Coordinate List (COO) sparse format to save memory on zero-heavy data.
+
+### Number Theory and Utilities
+- ```math_gcd(a, b)```: Calculates the Greatest Common Divisor using the Euclidean algorithm.
+- ```math_factorial(n)```: Calculates the factorial of n using recursion.
+- ```math_is_prime(n)```: Checks if a number is prime using optimized trial division.
+- ```math_clamp(val, min, max)```: Constrains a value within a defined range.
+
+### Expression Evaluation
+- ```evaluate_expression(exp)```: A robust calculator that parses a string expression (e.g., "(10 + 2) * 5") and returns a double. It correctly handles operator precedence and parentheses.
+
+## Usage Example
+```
+// Matrix Math
+matrix *A = matrix_rand(2, 2, 1, 5);
+matrix *B = matrix_rand(2, 2, 1, 5);
+matrix *C = matrix_mult(A, B);
+matrix_print(C);
+
+// Expression Parsing
+double result = evaluate_expression("3.5 * (10 + 2) / 4");
+printf("Result: %.2f\n", result); // 10.50
+
+// Cleanup
+free_matrix(A);
+free_matrix(B);
+free_matrix(C);
+```
+## Implementation Details
+The expression evaluator uses a Shunting-yard inspired logic with internal stacks for values and operators to manage precedence. Matrix multiplication checks for compatible dimensions (rows/cols) before execution and returns NULL on mismatch.
+
+# C-Zen Toolkit: cmaps.h
+Fast Key-Value Store (Dictionary) for C.
+
+The cmaps.h module implements a high-performance hash table using the DJB2 string hashing algorithm. It allows for near-instantaneous data retrieval by associating string keys with generic pointers, making it ideal for caches, session management, and database-like structures.
+
+## Module Documentation
+
+### Initialization and Memory
+- ```create_hashmap(size)```: Allocates a new hashmap with a specified number of buckets. A larger size reduces collisions but uses more memory.
+- ```hashmap_put(map, key, value)```: Inserts a key-value pair into the map. If the key already exists, the value is updated.
+
+### Retrieval
+- ```hashmap_get(map, key)```: Searches for a key and returns the associated generic (void*) pointer. Returns NULL if the key is not found.
+
+## Usage Example
+```
+// Create a map with 100 buckets
+hashmap *user_sessions = create_hashmap(100);
+
+// Store data
+char *user_id = "user_123";
+char *session_data = "active_session_payload";
+hashmap_put(user_sessions, user_id, session_data);
+
+// Retrieve data
+char *retrieved = (char*)hashmap_get(user_sessions, "user_123");
+if (retrieved) {
+    printf("Session Status: %s\n", retrieved);
+}
+```
+## Implementation Details
+The library uses "Separate Chaining" to handle hash collisions. When two keys produce the same hash index, they are stored in a linked list within that bucket. The hash function uses the DJB2 algorithm (hash * 33 + c) for efficient distribution of string keys.
+
+---
+
+## Technical Architecture
+C-Zen is built with a modular philosophy. Each header is designed to be independent where possible, allowing you to include only what you need. The toolkit prioritizes readability and ease of use, making it an ideal starting point for first-year students or developers looking to prototype quickly in C.
+
+## Performance Notes
+While C-Zen provides high-level abstractions, it remains close to the metal:
+- String operations are optimized for O(n) complexity.
+- Hashmap lookups maintain an average O(1) time complexity.
+- Matrix operations use contiguous memory blocks for cache efficiency.
+
+## License
+This project is open-source and available under the MIT License. Feel free to fork, modify, and use it in your own projects.
+
+## Contributions
+If you find a bug or have a suggestion for a new high-level feature (like a specific string helper or math algorithm), feel free to open an issue or submit a pull request!
+
+---
+**Maintained by Aritra**
+Contact: GitHub @PaperCodeGithub
