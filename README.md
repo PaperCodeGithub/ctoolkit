@@ -1,6 +1,5 @@
 # C-Zen Toolkit
 A high-level utility library for C developers.
-
 C-Zen is a comprehensive C toolkit designed to simplify common tasks such as string manipulation, dynamic array management, matrix math, mapping, and file I/O. It provides a clean, high-level interface to speed up development while maintaining C's raw performance.
 
 ## Core Modules
