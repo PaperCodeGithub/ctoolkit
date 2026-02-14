@@ -17,9 +17,10 @@ C-Zen is a comprehensive C toolkit designed to simplify common tasks such as str
 2. Include the desired header files in your C source code.
 3. Link the corresponding implementation files during compilation.
 
-## cio.h Documentation
-
+## C-Zen Toolkit: cio.h
 The cio.h header simplifies how you interact with the console and the file system.
+
+## Module Documentation
 
 ### Input and Conversion
 - ```cio_input(format, ...)```: Formatted prompt that returns a dynamically allocated string from stdin.
@@ -53,7 +54,7 @@ if (file_exists("user.txt")) {
 }
 ```
 
-## carray.h
+## C-Zen Toolkit: carray.h
 
 Dynamic and Type-Safe Arrays for C.
 The ```carray.h``` module provides a flexible wrapper around standard C arrays, allowing for dynamic resizing, multiple data types, and built-in searching and sorting algorithms. It manages memory allocation and reallocations automatically.
@@ -113,3 +114,57 @@ The library uses a Lomuto partition scheme for Quick Sort and handles type-casti
 ## Examples
 To know more about carray.h useage follow this repo link given below:
 https://github.com/PaperCodeGithub/array-operations-C
+
+# C-Zen Toolkit: cstring.h
+Advanced String Manipulation Library for C.
+
+The cstring.h module provides a suite of functions to handle strings with the ease of a high-level language. It includes utilities for case conversion, pattern matching, splitting, trimming, and complex transformations like replacement and shuffling.
+
+## Module Documentation
+
+### Case Conversion
+- ```str_lower(str)```: Converts all characters in a string to lowercase in-place.
+- ```str_upper(str)```: Converts all characters in a string to uppercase in-place.
+
+### Predicates and Checks
+- ```str_starts_with(str, prefix)```: Returns 1 if the string begins with the specified prefix.
+- ```str_ends_with(str, suffix)```: Returns 1 if the string ends with the specified suffix.
+- ```str_is_numeric(str)```: Returns 1 if the string contains only numeric digits.
+- ```str_is_alpha(str)```: Returns 1 if the string contains only alphabetic characters.
+- ```str_contains(haystack, needle)```: Returns 1 if a substring exists within the main string.
+
+### Transformation and Cleaning
+- ```str_trim(str)```: Returns a new heap-allocated string with leading and trailing whitespace removed.
+- ```str_replace(str, old_sub, new_sub)```: Returns a new string where all occurrences of a substring are replaced with another.
+- ```str_rev(str)```: Reverses the characters of a string in-place.
+- ```str_shuffle(str)```: Randomizes the order of characters in a string in-place.
+
+### Analysis and Splitting
+- ```str_count(str, sub)```: Returns the total number of non-overlapping occurrences of a substring.
+- ```str_split(str, token)```: Splices a string at every occurrence of the token and returns a C-Zen array (TYPE_STRING).
+
+## Usage Example
+```
+// Splitting a sentence into words
+const char *sentence = "C-Zen is powerful";
+array *words = str_split(sentence, ' ');
+
+// Transformation
+char name[] = "aritra";
+str_upper(name); // "ARITRA"
+
+// Cleanup and Replace
+char *raw = "   Durgapur, India   ";
+char *clean = str_trim(raw);
+char *replaced = str_replace(clean, "India", "WB");
+
+printf("Result: %s\n", replaced); // "Durgapur, WB"
+
+// Memory Management
+free(clean);
+free(replaced);
+free_array(words);
+```
+## Implementation Details
+Functions that return a new pointer (like str_trim, str_replace, and str_split) use heap allocation. The user is responsible for calling free() or free_array() to prevent memory leaks. The str_split function uses an internal 1024-byte buffer for parsing tokens.
+
