@@ -280,4 +280,3 @@ Please be mindful and respectful in all your interactions. I aim to foster a wel
 
 ### Getting Help
 If you have questions or need guidance on where to start, feel free to open an issue or reach out to the me. Every contribution, no matter how small is valuable!
----
