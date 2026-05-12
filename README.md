@@ -261,7 +261,23 @@ While C-Zen provides high-level abstractions, it remains close to the metal:
 - Hashmap lookups maintain an average O(1) time complexity.
 - Matrix operations use contiguous memory blocks for cache efficiency.
 
-## Contributions
-If you find a bug or have a suggestion for a new high-level feature (like a specific string helper or math algorithm), feel free to open an issue or submit a pull request!
+## Contribution
 
+First off, thank you for considering contributing to this project! It’s people like you that make the open-source community such an amazing place to learn, inspire, and create.
+### How Can I Contribute?
+* **Reporting Bugs:** If you find a bug, please open an issue and include a detailed description of the problem and steps to reproduce it.
+* **Suggesting Enhancements:** Have an idea for a new function/feature? Open an issue to discuss it with the community.
+  
+### Pull Requests:
+- Fork the repository.
+- Create a new branch for your feature or bug fix (git checkout -b feature/YourFeature).
+- Commit your changes with clear, descriptive messages.
+- Push your branch to your fork.
+- Open a Pull Request describing your changes.
+
+### Code of Conduct
+Please be mindful and respectful in all your interactions. I aim to foster a welcoming and inclusive environment for everyone.
+
+### Getting Help
+If you have questions or need guidance on where to start, feel free to open an issue or reach out to the me. Every contribution, no matter how small is valuable!
 ---
