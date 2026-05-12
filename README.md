@@ -39,7 +39,7 @@ The cio.h header simplifies how you interact with the console and the file syste
 
 
 ## Usage Example (cio.h)
-```
+```c
 char *name = cio_input("Enter your name: ");
 if (name) {
     write_file("user.txt", "User: %s", name);
@@ -90,7 +90,7 @@ The ```carray.h``` module provides a flexible wrapper around standard C arrays, 
 - ```sort_array(arr)```: Sorts the array in ascending order using a recursive Quick Sort algorithm.
 
 ## Usage Example
-```
+```c
 // Create a dynamic list of strings
 array *list = create_array(0, TYPE_STRING);
 
@@ -143,7 +143,7 @@ The cstring.h module provides a suite of functions to handle strings with the ea
 - ```str_split(str, token)```: Splices a string at every occurrence of the token and returns a C-Zen array (TYPE_STRING).
 
 ## Usage Example
-```
+```c
 // Splitting a sentence into words
 const char *sentence = "C-Zen is powerful";
 array *words = str_split(sentence, ' ');
@@ -198,7 +198,7 @@ The cmath.h module provides high-level mathematical utilities, ranging from stan
 - ```evaluate_expression(exp)```: A robust calculator that parses a string expression (e.g., "(10 + 2) * 5") and returns a double. It correctly handles operator precedence and parentheses.
 
 ## Usage Example
-```
+```c
 // Matrix Math
 matrix *A = matrix_rand(2, 2, 1, 5);
 matrix *B = matrix_rand(2, 2, 1, 5);
@@ -232,7 +232,7 @@ The cmaps.h module implements a high-performance hash table using the DJB2 strin
 - ```hashmap_get(map, key)```: Searches for a key and returns the associated generic (void*) pointer. Returns NULL if the key is not found.
 
 ## Usage Example
-```
+```c
 // Create a map with 100 buckets
 hashmap *user_sessions = create_hashmap(100);
 
@@ -261,12 +261,7 @@ While C-Zen provides high-level abstractions, it remains close to the metal:
 - Hashmap lookups maintain an average O(1) time complexity.
 - Matrix operations use contiguous memory blocks for cache efficiency.
 
-## License
-This project is open-source and available under the MIT License. Feel free to fork, modify, and use it in your own projects.
-
 ## Contributions
 If you find a bug or have a suggestion for a new high-level feature (like a specific string helper or math algorithm), feel free to open an issue or submit a pull request!
 
 ---
-**Maintained by Aritra**
-Contact: GitHub @PaperCodeGithub
